@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b14">
+<meta name="robots" content="noindex">
+<title>ETF Investment Plan</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #070b14; color: #cbd5e1; font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; overflow: hidden; }
+  /* the note sits UNDER the frame: it only shows while the app loads, or if Google refuses to show it (not signed in) */
+  .note { position: fixed; inset: 0; display: grid; place-content: center; text-align: center; padding: 24px; gap: 14px; }
+  .note img { width: 72px; height: 72px; border-radius: 18px; margin: 0 auto; }
+  .note small { color: #64748b; max-width: 300px; }
+  .note a { display: inline-block; margin: 0 auto; padding: 10px 18px; border-radius: 12px; background: #22c55e; color: #052e16; font-weight: 800; text-decoration: none; }
+  .note .later { opacity: 0; transition: opacity .4s; }
+  .note.slow .later { opacity: 1; }
+  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; }
+</style>
+</head>
+<body>
+<div class="note" id="note">
+  <img src="icon-192.png" alt="">
+  <div>Opening your plan…</div>
+  <small class="later">Still blank? Google needs you signed in as thopukaramahesh@gmail.com in Chrome.</small>
+  <a class="later" id="signin" target="_blank" rel="noopener">Sign in once in Chrome</a>
+  <small class="later">Then come back here and reopen the app.</small>
+</div>
+<iframe id="app" title="ETF Investment Plan" allow="clipboard-write"></iframe>
+<script>
+  const APP = 'https://script.google.com/macros/s/AKfycbzSzkcPlHvKXeZQLf6GOimiuA9K3nTTvkgtpH9lh9LeL1XBD05fXTPiAkkqyzuWA8HT/exec';
+  document.getElementById('signin').href = APP;
+  document.getElementById('app').src = APP;
+  setTimeout(() => document.getElementById('note').classList.add('slow'), 6000);
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
