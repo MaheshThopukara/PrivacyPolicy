@@ -12,13 +12,14 @@
 <style>
   :root { color-scheme: dark; }
   html, body { margin: 0; height: 100%; background: #070b14; color: #cbd5e1; font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; overflow: hidden; }
-  /* the note sits UNDER the frame: it only shows while the app loads, or if Google refuses to show it (not signed in) */
-  .note { position: fixed; inset: 0; display: grid; place-content: center; text-align: center; padding: 24px; gap: 14px; }
+  /* the splash sits OVER the frame until the app says it loaded; if it never does (not signed in), it offers the sign-in */
+  .note { position: fixed; inset: 0; z-index: 2; background: #070b14; transition: opacity .3s; display: grid; place-content: center; text-align: center; padding: 24px; gap: 14px; }
   .note img { width: 72px; height: 72px; border-radius: 18px; margin: 0 auto; }
   .note small { color: #64748b; max-width: 300px; }
   .note a { display: inline-block; margin: 0 auto; padding: 10px 18px; border-radius: 12px; background: #22c55e; color: #052e16; font-weight: 800; text-decoration: none; }
   .note .later { opacity: 0; transition: opacity .4s; }
   .note.slow .later { opacity: 1; }
+  .note.gone { opacity: 0; pointer-events: none; }
   iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; }
 </style>
 </head>
@@ -35,7 +36,10 @@
   const APP = 'https://script.google.com/macros/s/AKfycbzSzkcPlHvKXeZQLf6GOimiuA9K3nTTvkgtpH9lh9LeL1XBD05fXTPiAkkqyzuWA8HT/exec';
   document.getElementById('signin').href = APP;
   document.getElementById('app').src = APP;
-  setTimeout(() => document.getElementById('note').classList.add('slow'), 6000);
+  const note = document.getElementById('note');
+  let ready = false;
+  addEventListener('message', e => { if (e.data === 'etf-ready' && /(^|\.)(google|googleusercontent)\.com$/.test(new URL(e.origin).hostname)) { ready = true; note.classList.add('gone'); } });
+  setTimeout(() => { if (!ready) note.classList.add('slow'); }, 8000);
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>
