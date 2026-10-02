@@ -140,7 +140,9 @@
     <strong>🛡️ Privacy at a Glance</strong>
     BrainPlay is made for children aged 3–13, so it is built to hold as little as possible. There are no
     accounts, no advertisements, no analytics and no tracking of any kind. Everything about your child —
-    their name, age, avatar, scores, stars and badges — is stored only on your device and is never uploaded.
+    their name, age, avatar, scores, stars and badges — is stored on your device and is never sent to us. If your
+    device's Android backup is switched on, Android also keeps a copy in your own Google account, so it can come
+    back if the app is reinstalled.
     The app talks to our servers for one reason: to download the questions and pictures the games are made
     of. That traffic only ever comes down, never up.
   </div>
@@ -156,7 +158,7 @@
         <li>Does <strong>not</strong> contain advertisements or any advertising SDK</li>
         <li>Does <strong>not</strong> use analytics, telemetry, or crash-reporting services</li>
         <li>Does <strong>not</strong> use the advertising ID, or any cross-app or cross-site identifier</li>
-        <li>Does <strong>not</strong> upload your child's name, age, photos, voice, scores or progress</li>
+        <li>Does <strong>not</strong> send us your child's name, age, photos, voice, scores or progress</li>
         <li>Does <strong>not</strong> ask for camera, microphone, location, contacts or file access</li>
       </ul>
       <div class="info-box">
@@ -173,7 +175,7 @@
     <div class="section-head"><h2>2. What Is Stored On Your Device</h2></div>
     <div class="section-body">
       <p>A grown-up sets up a profile for each child. All of it stays in the app's private storage on your
-      television, and none of it is transmitted:</p>
+      device, and the app itself transmits none of it (Android's own backup is described in section 3):</p>
       <table class="data">
         <tr><th>What</th><th>Why it exists</th></tr>
         <tr><td>Child's first name, age and avatar emoji</td><td>To greet them and to choose questions at the right level</td></tr>
@@ -217,6 +219,13 @@
         provider. Their handling is described in the
         <a href="https://firebase.google.com/support/privacy">Firebase Privacy and Security</a> documents.</span>
       </div>
+      <p><strong>Android's own backup.</strong> If backup is switched on in your device's settings, Android
+      copies one small BrainPlay progress file into the backup of the Google account signed in on the device:
+      profile names, ages and avatars, scores, stars, badges, medals and daily-quest progress, settings,
+      parental-control settings, and the parental PIN as a salted hash (never the PIN itself). Android puts it
+      back if BrainPlay is reinstalled on that device, or on a new device set up from that backup. Android and
+      Google do this under your Google account — the file never reaches us and we cannot read it. Downloaded
+      questions and pictures are not included. To stop it, turn off backup in your device's settings.</p>
     </div>
   </div>
 
@@ -235,7 +244,8 @@
         <li>There are no external links, in-app purchases or advertisements a child could tap</li>
       </ul>
       <p>The name and age a grown-up enters are for the app's own use on that television. They are visible
-      only on that device, and removing the profile removes them.</p>
+      only on that device. Removing the profile removes them from the device, and from the Android backup
+      the next time it runs.</p>
     </div>
   </div>
 
@@ -248,7 +258,9 @@
         <li><strong>Delete a child's profile</strong> in the grown-up area — their name, age, scores,
         stars, badges and settings are permanently removed from the device</li>
         <li><strong>Clear app data</strong> in Android settings — every stored item is erased</li>
-        <li><strong>Uninstall the app</strong> — Android removes all of it with the app</li>
+        <li><strong>Uninstall the app</strong> — Android removes it from the device. If Android backup is on, the
+        copy in your Google account stays, so a reinstall can bring the progress back; turn backup off, or delete
+        the device's backup from your Google account, to remove that copy too</li>
       </ul>
       <p>We hold no copy of any of it, so there is nothing on our side to request, export or delete.</p>
     </div>
@@ -261,7 +273,9 @@
       <p>Your child's profile and progress stay on your device until you delete the profile, clear the
       app's data, or uninstall the app. Downloaded questions and pictures are cached to keep the games
       working offline and are refreshed or removed by the app as content changes. We operate no user
-      database, so we retain nothing.</p>
+      database, so we retain nothing. If Android backup is switched on, the latest copy of the progress file
+      also stays in your own Google account until a newer backup replaces it, or until Google removes the
+      backups of a device that has not been used for a while.</p>
     </div>
   </div>
 
@@ -277,6 +291,9 @@
         <li><strong>App Check with Play Integrity</strong> — verifies that requests come from a genuine
         copy of the app</li>
       </ul>
+      <p>Separately, if you have switched on Android's own backup, Android — part of the operating system and
+      Google Play services, not something inside BrainPlay — may back up the progress file described in
+      section 3.</p>
       <p>BrainPlay does not include Google Analytics, Firebase Analytics, Crashlytics, any advertising
       network, or any social-media or login SDK.</p>
     </div>
@@ -291,7 +308,7 @@
         <li>Child data lives in the app's private storage, which Android isolates from other apps</li>
         <li>The parental PIN is stored as a salted SHA-256 hash with an attempt lockout</li>
         <li>App Check restricts our content to genuine copies of the app</li>
-        <li>The smallest possible attack surface: no accounts, no uploads, and only two permissions</li>
+        <li>The smallest possible attack surface: no accounts, nothing uploaded to us, and only two permissions</li>
       </ul>
     </div>
   </div>
@@ -318,8 +335,8 @@
 
   <div class="bottom-box">
     <strong>🧠 The Bottom Line</strong>
-    Your child's name, age and progress never leave your television. BrainPlay downloads its questions and
-    never sends anything back — no accounts, no adverts, no analytics, nothing to track.
+    Your child's name, age and progress are never sent to us (if Android backup is on, Android keeps a copy in
+    your own Google account). BrainPlay downloads its questions and never sends anything back — no accounts, no adverts, no analytics, nothing to track.
   </div>
 
   <div class="footer">
